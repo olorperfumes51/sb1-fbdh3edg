@@ -4,6 +4,7 @@ import CategoryPage from './pages/CategoryPage';
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
 import { CategoryProvider } from './data/CategoryContext'; // Import CategoryProvider
+import './styles/Style.css';
 
 function App() {
   return (

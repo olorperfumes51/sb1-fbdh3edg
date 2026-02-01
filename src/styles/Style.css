@@ -1,0 +1,113 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+/* 3D Flip Effect for Category Cards */
+.card {
+    perspective: 1500px;
+    cursor: pointer;
+}
+
+.card-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.card-front {
+    background-color: #f1f1f1;
+    /* Additional styles for the front of the card */
+}
+
+.card-back {
+    background-color: #00b3b3;
+    color: white;
+    transform: rotateY(180deg);
+    /* Additional styles for the back of the card */
+}
+
+/* Animations for Fade In & Out */
+.animate-fadeIn {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animate-fadeUp {
+    animation: fadeUp 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 3D Hover Zoom effect for Category Cards */
+.category-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-card:hover {
+    transform: scale(1.05) rotateY(10deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Background Gradient Styling */
+.bg-gradient {
+    background: linear-gradient(to right, #00b3b3, #f1f1f1);
+}
+
+/* General Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.grid {
+    display: grid;
+    gap: 20px;
+}
+
+.grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+}

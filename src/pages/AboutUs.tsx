@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header'; // Assuming you already have a Header component
 import { FaPhoneAlt } from 'react-icons/fa';
+import { motion } from 'framer-motion'; // For animations
 
 export default function AboutPage() {
   const navigate = useNavigate();
@@ -20,31 +21,79 @@ export default function AboutPage() {
           Back to Home
         </button>
 
-        <div className="text-center">
-          <h2 className="text-4xl font-serif text-emerald-900 mb-6">
+        <div className="text-center mb-16">
+          {/* Title with animation */}
+          <motion.h2
+            className="text-4xl font-serif text-emerald-900 mb-6"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
             About OLOR Perfumery
-          </h2>
-          <p className="text-emerald-900/70 mb-8 text-lg">
+          </motion.h2>
+
+          {/* Image with animation */}
+          <motion.img
+            src="https://example.com/your-image.jpg" // Add your image here
+            alt="Fragrance"
+            className="w-full max-w-3xl mx-auto rounded-lg shadow-lg mb-10"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 1 }}
+          />
+
+          {/* Paragraphs with fade-in animation */}
+          <motion.p
+            className="text-amber-400 mb-8 text-lg leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
             OLOR Perfumery crafts exquisite aromatic compositions that blend
             artistry with nature’s finest essences. Our fragrances are designed
             for versatile application across fine perfumery, personal care, home
             ambiance, aromatherapy, and lifestyle products—elevating everyday
             experiences through scent.
-          </p>
-          <p className="text-emerald-900/70 mb-8 text-lg">
+          </motion.p>
+          <motion.p
+            className="text-amber-400 mb-8 text-lg leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.7 }}
+          >
             We believe fragrance is more than aroma; it is emotion, identity,
             and well-being. Our carefully curated ingredients contribute to
             sensory balance, personal expression, and a refined atmosphere in
             both personal and shared spaces.
-          </p>
-          <p className="text-emerald-900/70 mb-8 text-lg">
+          </motion.p>
+          <motion.p
+            className="text-emerald-900/70 mb-8 text-lg leading-relaxed"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1 }}
+          >
             At OLOR Perfumery, we create high-quality, thoughtfully developed
             perfume oils and aromatic blends that seamlessly integrate into your
             products, enhancing their character, longevity, and appeal. Explore
             our growing collection of signature scents, where craftsmanship,
             creativity, and olfactory excellence come together.
-          </p>
+          </motion.p>
         </div>
+
+        {/* Add some animations to the footer */}
+        <motion.div
+          className="mt-20 bg-gradient-to-r from-emerald-200 via-emerald-100 to-amber-50 p-8 rounded-lg shadow-lg"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.3 }}
+        >
+          <h3 className="text-3xl font-serif text-emerald-900 mb-4 text-center">Our Values</h3>
+          <p className="text-lg text-emerald-800 text-center">
+            We value authenticity, quality, and artistry. Our fragrances aim to
+            evoke emotions, enhance well-being, and provide a personal touch to
+            every product they are part of.
+          </p>
+        </motion.div>
       </section>
 
       {/* ================= FOOTER ================= */}

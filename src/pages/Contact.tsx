@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { FaPhoneAlt } from 'react-icons/fa';
-import Header from '../components/Header'; // Import Header
+import Header from '../components/Header';
+import { motion } from 'framer-motion'; // Import animation library
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -18,7 +19,6 @@ export default function ContactPage() {
 
   const navigate = useNavigate();
 
-  // Google Apps Script API URL (replace with your own URL)
   const apiUrl =
     'https://script.google.com/macros/s/AKfycbyWRnMNLQF8CZiinuDQJO2EOvjn2iEeSdYcPJKxTqEsJN7jk3h730j4KREmyybEKRp4Yw/exec';
 
@@ -69,7 +69,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen font-sans bg-gradient-to-b from-emerald-50 via-emerald-100/40 to-amber-50">
+    <div className="min-h-screen font-sans bg-gradient-to-b from-emerald-50 via-emerald-100/40 to-emerald-200">
       {/* ================= HEADER ================= */}
       <Header onHomeClick={() => navigate('/')} />
 
@@ -83,26 +83,36 @@ export default function ContactPage() {
           Back to Home
         </button>
 
-        {/* Form & Contact Information */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <h2 className="text-3xl font-serif text-emerald-900 mb-6">
+            You Can Raise a Query
+          </h2>
+          <p className="text-emerald-900/60 mb-8 text-lg">
+            Please fill out the form on the right to submit your query or
+            request.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
           {/* Left Section - Contact Information */}
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl font-serif text-emerald-900 mb-6">
-              You Can Raise a Query
-            </h2>
-            <p className="text-emerald-900/60 mb-8 text-lg">
-              Please fill out the form on the right to submit your query or
-              request.
-            </p>
-
             <div className="space-y-4">
               <div>
-                <p className="text-xl font-semibold text-emerald-800">
-                  Address:
-                </p>
+                <p className="text-xl font-semibold text-emerald-800">Address:</p>
                 <p className="text-lg text-emerald-900">
-                  Olor Perfumery H-12, Kailash Park Indl. Area, New Delhi -
-                  110015, India
+                  Olor Perfumery H-12, Kailash Park Indl. Area
+                  <br />
+                  New Delhi - 110015, India
                 </p>
               </div>
 
@@ -208,7 +218,7 @@ export default function ContactPage() {
               </div>
             </form>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ================= FOOTER ================= */}
