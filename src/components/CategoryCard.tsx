@@ -1,6 +1,5 @@
 import { ArrowRight } from 'lucide-react';
 import { Category } from '../types'; // Import Category type
-import { motion } from 'framer-motion';
 
 interface CategoryCardProps {
   category: Category;
@@ -17,11 +16,9 @@ export default function CategoryCard({
     : [];
 
   return (
-    <motion.button
+    <button
       onClick={() => onSelect(category.id)}
       className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
-      whileHover={{ scale: 1.05, rotateY: 10 }}
-      whileTap={{ scale: 0.98 }}
     >
       {/* Aspect Ratio for image */}
       <div className="aspect-[4/5] relative">
@@ -44,14 +41,12 @@ export default function CategoryCard({
           {/* Fragrance Notes */}
           <div className="flex flex-wrap gap-2 mb-4">
             {fragranceNotes.slice(0, 3).map((note, index) => (
-              <motion.span
+              <span
                 key={index} // Use index if 'note' is not unique
                 className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
               >
                 {note}
-              </motion.span>
+              </span>
             ))}
           </div>
 
@@ -62,6 +57,6 @@ export default function CategoryCard({
           </div>
         </div>
       </div>
-    </motion.button>
+    </button>
   );
 }
