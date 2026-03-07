@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CategoryCard from "../components/CategoryCard";
 import axios from "axios";
@@ -20,6 +20,7 @@ export default function HomePage() {
 
   const { categories, setCategories } = useCategories();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const apiUrl =
     "https://script.google.com/macros/s/AKfycbzot9kAlEffXJTPdkV14FXOZ02KAAObuYbOhaiWnI1zoMQN2_loldD8xCPh4cNJmUxj/exec";
@@ -29,6 +30,8 @@ export default function HomePage() {
     const fetchCategories = async () => {
 
       try {
+
+        setLoading(true);
 
         if (categories.length === 0) {
 
@@ -47,6 +50,8 @@ export default function HomePage() {
 
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
 
     };
@@ -66,11 +71,11 @@ export default function HomePage() {
   return (
     <div className="min-h-screen font-sans bg-gradient-to-b from-emerald-50 via-emerald-100/40 to-amber-50">
 
-      {/* ================= HEADER ================= */}
+      {/* HEADER */}
 
       <Header onHomeClick={handleHomeClick} />
 
-      {/* ================= HERO ================= */}
+      {/* HERO */}
 
       <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
 
@@ -103,7 +108,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* ================= USP ================= */}
+      {/* USP */}
 
       <section className="max-w-7xl mx-auto px-6 py-24 bg-emerald-50/60">
 
@@ -131,7 +136,7 @@ export default function HomePage() {
 
       </section>
 
-      {/* ================= COLLECTIONS ================= */}
+      {/* COLLECTIONS */}
 
       <section className="max-w-7xl mx-auto px-6 pb-12">
 
@@ -149,25 +154,27 @@ export default function HomePage() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
 
-          {categories.map((category) => (
-
-            <CategoryCard
-              key={category.id}
-              category={category}
-              onSelect={onCategorySelect}
-            />
-
-          ))}
+          {loading
+            ? Array.from({ length: 6 }).map((_, index) => (
+                <SkeletonCard key={index} />
+              ))
+            : categories.map((category) => (
+                <CategoryCard
+                  key={category.id}
+                  category={category}
+                  onSelect={onCategorySelect}
+                />
+              ))}
 
         </div>
 
       </section>
 
-      {/* ================= TRUSTED PARTNERS ================= */}
+      {/* TRUSTED PARTNERS */}
 
       <TrustedPartners />
 
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
 
       <footer className="bg-emerald-950 text-emerald-100">
 
@@ -210,7 +217,7 @@ export default function HomePage() {
   );
 }
 
-/* ================= USP ================= */
+/* USP */
 
 function USP({
   icon,
@@ -228,6 +235,28 @@ function USP({
       </div>
       <h3 className="text-xl font-serif text-emerald-900 mb-3">{title}</h3>
       <p className="text-emerald-900/60">{desc}</p>
+    </div>
+  );
+}
+
+/* SKELETON CARD */
+
+function SkeletonCard() {
+  return (
+    <div className="animate-pulse rounded-lg overflow-hidden shadow-lg">
+
+      <div className="aspect-[4/5] bg-emerald-200/40"></div>
+
+      <div className="p-4 space-y-3 bg-white">
+
+        <div className="h-4 bg-emerald-200 rounded w-3/4"></div>
+
+        <div className="h-3 bg-emerald-200 rounded w-full"></div>
+
+        <div className="h-3 bg-emerald-200 rounded w-5/6"></div>
+
+      </div>
+
     </div>
   );
 }

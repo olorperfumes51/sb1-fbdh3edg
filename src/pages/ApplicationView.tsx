@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 type Application = {
   sno: number;
@@ -22,13 +23,18 @@ export default function ApplicationView() {
   const API_URL =
     "https://script.google.com/macros/s/AKfycbzot9kAlEffXJTPdkV14FXOZ02KAAObuYbOhaiWnI1zoMQN2_loldD8xCPh4cNJmUxj/exec?type=applications";
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   useEffect(() => {
 
     window.scrollTo(0, 0);
-
-    /* =========================
-       CACHE SYSTEM
-    ========================= */
 
     const cached = localStorage.getItem("applications_cache");
     const cacheTime = localStorage.getItem("applications_cache_time");
@@ -41,10 +47,6 @@ export default function ApplicationView() {
       return;
     }
 
-    /* =========================
-       FETCH API
-    ========================= */
-
     fetch(API_URL)
       .then((res) => res.json())
       .then((data) => {
@@ -55,7 +57,6 @@ export default function ApplicationView() {
 
         setApplications(filtered);
 
-        /* SAVE CACHE */
         localStorage.setItem("applications_cache", JSON.stringify(filtered));
         localStorage.setItem("applications_cache_time", now.toString());
 
@@ -75,7 +76,7 @@ export default function ApplicationView() {
       {/* HEADER */}
       <Header />
 
-      {/* HERO WITH IMAGE */}
+      {/* HERO */}
       <section
         className="relative h-[40vh] flex items-center justify-center overflow-hidden"
         style={{
@@ -88,9 +89,14 @@ export default function ApplicationView() {
 
         <div className="absolute inset-0 bg-black/50" />
 
-        <h1 className="relative text-5xl md:text-6xl font-serif text-white drop-shadow-lg">
+        <motion.h1
+          initial={{ opacity: 0, y: -40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative text-5xl md:text-6xl font-serif text-white drop-shadow-lg"
+        >
           Applications
-        </h1>
+        </motion.h1>
 
       </section>
 
@@ -131,20 +137,25 @@ export default function ApplicationView() {
                 </div>
               ))
 
-            /* APPLICATION CARDS */
             : applications.map((app) => (
-                <div
+                <motion.div
                   key={app.sno}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:scale-105 transition duration-300"
+                  variants={cardVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  whileHover={{ y: -8 }}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden transition duration-300"
                 >
 
-                  {/* LAZY IMAGE */}
-                  <img
-                    loading="lazy"
-                    src={app.image_url}
-                    alt={app.name}
-                    className="w-full h-56 object-cover"
-                  />
+                  <div className="overflow-hidden">
+                    <img
+                      loading="lazy"
+                      src={app.image_url}
+                      alt={app.name}
+                      className="w-full h-56 object-cover transition duration-500 hover:scale-110"
+                    />
+                  </div>
 
                   <div className="p-6">
 
@@ -158,7 +169,7 @@ export default function ApplicationView() {
 
                   </div>
 
-                </div>
+                </motion.div>
               ))}
 
         </div>

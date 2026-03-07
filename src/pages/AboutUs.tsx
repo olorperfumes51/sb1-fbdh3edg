@@ -1,112 +1,151 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header'; // Assuming you already have a Header component
-import { FaPhoneAlt } from 'react-icons/fa';
-import { motion } from 'framer-motion'; // For animations
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import { FaPhoneAlt } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   const navigate = useNavigate();
 
   return (
     <div className="min-h-screen font-sans bg-gradient-to-b from-emerald-50 via-emerald-100/40 to-amber-50">
-      {/* ================= HEADER ================= */}
-      <Header onHomeClick={() => navigate('/')} />
 
-      {/* ================= CONTENT ================= */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <button
-          onClick={() => navigate('/')} // Navigate back to home page
-          className="inline-flex items-center gap-2 mb-14 text-emerald-800 hover:text-emerald-600 font-medium transition-colors"
+      {/* HEADER */}
+
+      <Header onHomeClick={() => navigate("/")} />
+
+      {/* HERO */}
+
+      <section className="relative h-[40vh] flex items-center justify-center">
+
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url(https://images.pexels.com/photos/965989/pexels-photo-965989.jpeg)",
+          }}
         >
-          Back to Home
-        </button>
-
-        <div className="text-center mb-16">
-          {/* Title with animation */}
-          <motion.h2
-            className="text-4xl font-serif text-emerald-900 mb-6"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            About OLOR Perfumery
-          </motion.h2>
-
-          {/* Image with animation */}
-          <motion.img
-            src="https://example.com/your-image.jpg" // Add your image here
-            alt="Fragrance"
-            className="w-full max-w-3xl mx-auto rounded-lg shadow-lg mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 1 }}
-          />
-
-          {/* Paragraphs with fade-in animation */}
-          <motion.p
-            className="text-amber-400 mb-8 text-lg leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            OLOR Perfumery crafts exquisite aromatic compositions that blend
-            artistry with nature’s finest essences. Our fragrances are designed
-            for versatile application across fine perfumery, personal care, home
-            ambiance, aromatherapy, and lifestyle products—elevating everyday
-            experiences through scent.
-          </motion.p>
-          <motion.p
-            className="text-amber-400 mb-8 text-lg leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.7 }}
-          >
-            We believe fragrance is more than aroma; it is emotion, identity,
-            and well-being. Our carefully curated ingredients contribute to
-            sensory balance, personal expression, and a refined atmosphere in
-            both personal and shared spaces.
-          </motion.p>
-          <motion.p
-            className="text-emerald-900/70 mb-8 text-lg leading-relaxed"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-          >
-            At OLOR Perfumery, we create high-quality, thoughtfully developed
-            perfume oils and aromatic blends that seamlessly integrate into your
-            products, enhancing their character, longevity, and appeal. Explore
-            our growing collection of signature scents, where craftsmanship,
-            creativity, and olfactory excellence come together.
-          </motion.p>
+          <div className="absolute inset-0 bg-black/50" />
         </div>
 
-        {/* Add some animations to the footer */}
-        <motion.div
-          className="mt-20 bg-gradient-to-r from-emerald-200 via-emerald-100 to-amber-50 p-8 rounded-lg shadow-lg"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.3 }}
+        <motion.h1
+          className="relative z-10 text-5xl md:text-6xl font-serif text-white tracking-wide"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
-          <h3 className="text-3xl font-serif text-emerald-900 mb-4 text-center">Our Values</h3>
-          <p className="text-lg text-emerald-800 text-center">
-            We value authenticity, quality, and artistry. Our fragrances aim to
-            evoke emotions, enhance well-being, and provide a personal touch to
-            every product they are part of.
-          </p>
-        </motion.div>
+          About OLOR Perfumery
+        </motion.h1>
+
       </section>
 
-      {/* ================= FOOTER ================= */}
+      {/* CONTENT */}
+
+      <section className="max-w-7xl mx-auto px-6 py-20">
+
+        {/* GRID */}
+
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+
+          {/* IMAGE */}
+
+          <motion.img
+            src="https://images.pexels.com/photos/3059609/pexels-photo-3059609.jpeg"
+            alt="Perfume"
+            className="rounded-xl shadow-xl"
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          />
+
+          {/* TEXT */}
+
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+
+            <h2 className="text-4xl font-serif text-emerald-900 mb-6">
+              Crafting Fragrance with Passion
+            </h2>
+
+            <p className="text-emerald-900/80 mb-6 leading-relaxed text-lg">
+              OLOR Perfumery crafts exquisite aromatic compositions that blend
+              artistry with nature’s finest essences. Our fragrances are designed
+              for versatile applications across perfumery, personal care,
+              aromatherapy and lifestyle products.
+            </p>
+
+            <p className="text-emerald-900/80 mb-6 leading-relaxed text-lg">
+              We believe fragrance is more than aroma — it is emotion, identity
+              and memory. Our carefully curated ingredients help create sensory
+              balance and a refined atmosphere in both personal and shared spaces.
+            </p>
+
+            <p className="text-emerald-900/80 leading-relaxed text-lg">
+              At OLOR Perfumery, every fragrance is crafted with attention to
+              quality, creativity and timeless elegance.
+            </p>
+
+          </motion.div>
+
+        </div>
+
+      </section>
+
+      {/* VALUES */}
+
+      <section className="bg-white py-20">
+
+        <div className="max-w-6xl mx-auto px-6">
+
+          <motion.h2
+            className="text-4xl font-serif text-center text-emerald-900 mb-16"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+          >
+            Our Values
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-12">
+
+            <ValueCard
+              title="Authenticity"
+              text="We source premium ingredients and maintain authenticity in every fragrance."
+            />
+
+            <ValueCard
+              title="Craftsmanship"
+              text="Each blend is carefully crafted to deliver a refined and lasting scent."
+            />
+
+            <ValueCard
+              title="Elegance"
+              text="Our fragrances elevate everyday moments with elegance and sophistication."
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* FOOTER */}
+
       <footer className="bg-emerald-950 text-emerald-100">
+
         <div className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
+
           <div>
             <h3 className="text-2xl font-serif text-amber-400 mb-4">
               Olor PerFumery
             </h3>
-            <p className="text-sm text-emerald-200 leading-relaxed">
+            <p className="text-sm text-emerald-200">
               Luxury fragrances crafted from nature’s finest elements.
             </p>
           </div>
+
           <div>
             <h4 className="font-semibold text-white mb-4">Address</h4>
             <p className="text-sm text-emerald-200">
@@ -115,18 +154,43 @@ export default function AboutPage() {
               New Delhi - 110015, India
             </p>
           </div>
+
           <div>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
             <p className="flex items-center gap-2 text-sm text-emerald-200">
-              <FaPhoneAlt className="h-4 w-4" /> +91 9560939994
+              <FaPhoneAlt /> +91 9560939994
             </p>
           </div>
+
         </div>
 
         <div className="border-t border-emerald-900 py-4 text-center text-xs text-emerald-300">
           © {new Date().getFullYear()} Olor PerFumery. All Rights Reserved.
         </div>
+
       </footer>
+
     </div>
+  );
+}
+
+/* VALUE CARD */
+
+function ValueCard({ title, text }: { title: string; text: string }) {
+  return (
+    <motion.div
+      className="bg-emerald-50 rounded-xl p-8 shadow-md text-center hover:shadow-xl transition"
+      whileHover={{ y: -8 }}
+    >
+
+      <h3 className="text-2xl font-serif text-emerald-900 mb-4">
+        {title}
+      </h3>
+
+      <p className="text-emerald-900/70">
+        {text}
+      </p>
+
+    </motion.div>
   );
 }
