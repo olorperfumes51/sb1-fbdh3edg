@@ -1,3 +1,60 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Trusted Partners Slider */
+
+@layer components {
+
+  .trusted-wrapper {
+    @apply w-full py-16 overflow-hidden;
+    background: linear-gradient(to right, #f8fafc, #eef2f7);
+  }
+
+  .trusted-title {
+    @apply text-center text-3xl font-bold mb-10 text-gray-800;
+  }
+
+  .trusted-slider {
+    @apply relative w-full overflow-hidden;
+  }
+
+  .trusted-track {
+    display: flex;
+    width: max-content;
+    animation: scrollTrusted 35s linear infinite;
+  }
+
+  .trusted-logo {
+    @apply flex items-center justify-center bg-white shadow-md rounded-xl mx-6 px-10 py-6 transition-all duration-300;
+    min-width: 200px;
+  }
+
+  .trusted-logo img {
+    max-height: 60px;
+    object-fit: contain;
+    opacity: 0.8;
+  }
+
+  .trusted-logo:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+
+}
+
+
+/* Animation */
+
+@keyframes scrollTrusted {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+
+}

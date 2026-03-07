@@ -18,7 +18,9 @@ export default function Header({ onHomeClick }: HeaderProps) {
   const handleContactClick = () => {
     navigate('/contact'); // Navigate to the contact page when clicked
   };
-
+  const handleApplicationClick = () => {
+    navigate('/ApplicationView'); // Navigate to the contact page when clicked
+  };
   return (
     <header className="bg-emerald-950 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,6 +47,12 @@ export default function Header({ onHomeClick }: HeaderProps) {
               className="text-amber-400 hover:text-amber-500 transition-colors font-medium"
             >
               Collections
+            </button>
+            <button
+              onClick={handleApplicationClick} // Trigger navigate to contact page on click
+              className="text-amber-400 hover:text-amber-500 transition-colors font-medium"
+            >
+              Applications
             </button>
             <button
               onClick={handleAboutUsClick}

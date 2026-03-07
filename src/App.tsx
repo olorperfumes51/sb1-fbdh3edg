@@ -3,6 +3,7 @@ import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
+import ApplicationView from'./pages/ApplicationView';
 import { CategoryProvider } from './data/CategoryContext'; // Import CategoryProvider
 import './styles/Style.css';
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/ApplicationView" element={<ApplicationView />} />
           <Route
             path="/category/:categoryId"
             element={<CategoryPage onBack={() => window.scrollTo(0, 0)} />}
