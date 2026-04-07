@@ -48,12 +48,12 @@ export default function Header({ onHomeClick }: HeaderProps) {
             >
               Collections
             </button>
-            <button
+            {/* <button
               onClick={handleApplicationClick} // Trigger navigate to contact page on click
               className="text-amber-400 hover:text-amber-500 transition-colors font-medium"
             >
               Applications
-            </button>
+            </button> */}
             <button
               onClick={handleAboutUsClick}
               className="text-amber-400 hover:text-amber-500 transition-colors font-medium"

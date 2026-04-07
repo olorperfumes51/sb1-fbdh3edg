@@ -83,7 +83,7 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{
             backgroundImage:
-              "url(https://images.pexels.com/photos/1743229/pexels-photo-1743229.jpeg)",
+              "url(https://i.ibb.co/bj6TpzPp/Gemini-Generated-Image-9cd1m99cd1m99cd1.png)",
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
@@ -172,7 +172,7 @@ export default function HomePage() {
 
       {/* TRUSTED PARTNERS */}
 
-      <TrustedPartners />
+      {/* <TrustedPartners /> */}
 
       {/* FOOTER */}
 
