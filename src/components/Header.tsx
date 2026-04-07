@@ -1,5 +1,6 @@
 import { Flower2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate for routing
+import logo from "../assets/logo.png";
 
 interface HeaderProps {
   onHomeClick: () => void;
@@ -30,7 +31,11 @@ export default function Header({ onHomeClick }: HeaderProps) {
             onClick={handleHomeClick} // Trigger navigate to home on click
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
           >
-            <Flower2 className="h-8 w-8 text-amber-700" />
+         <img
+  src={logo}
+  alt="Olor Perfumery Logo"
+  className="h-10 w-10 object-contain"
+/>
             <div className="text-left">
               <h1 className="text-2xl font-serif text-amber-400">
                 Olor PerFumery

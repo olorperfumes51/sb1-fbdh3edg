@@ -6,6 +6,7 @@ import { Sparkles, Leaf, Heart, Phone } from "lucide-react";
 import Header from "../components/Header";
 import { useCategories } from "../data/CategoryContext";
 import TrustedPartners from "../components/TrustedPartners";
+import logo from "../assets/logo.png";
 
 interface Category {
   id: string;
@@ -89,22 +90,21 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
         </div>
 
-        <div className="relative z-10 text-center px-6 max-w-3xl">
+        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
 
-          <h1 className="text-6xl md:text-7xl font-serif tracking-widest mb-6 text-emerald-50">
-            Olor PerFumery
-          </h1>
+  <h1 className="text-5xl sm:text-6xl md:text-7xl font-serif tracking-[0.2em] mb-6 text-emerald-50">
+    Olor Perfumery
+  </h1>
 
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-amber-300 text-xl md:text-2xl font-semibold mb-6">
-            From Nature • For Soul
-          </span>
+  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-amber-300 text-lg sm:text-xl md:text-2xl font-semibold mb-6">
+    From Nature • For Soul
+  </span>
 
-          <p className="text-white/90 text-base md:text-lg">
-            Handcrafted fragrances inspired by nature — blending purity,
-            elegance and timeless aroma
-          </p>
+  <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto">
+    Handcrafted fragrances inspired by nature — blending purity, elegance and timeless aroma
+  </p>
 
-        </div>
+</div>
 
       </section>
 
