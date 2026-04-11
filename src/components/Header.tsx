@@ -41,7 +41,7 @@ export default function Header({ onHomeClick }: HeaderProps) {
                 Olor PerFumery
               </h1>
               <p className="text-xs text-amber-400 tracking-widest">
-                 FRAGRANCES & Flavours
+                 FRAGRANCES & FLAVOURS
               </p>
             </div>
           </button>
